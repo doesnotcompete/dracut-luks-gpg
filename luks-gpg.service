@@ -1,0 +1,20 @@
+[Unit]
+Description=LUKS GPG Local FS
+Before=local-fs.target
+After=local-fs-pre.target
+DefaultDependencies=no
+Conflicts=umount.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/luks-gpg
+RemainAfterExit=no
+Timeout=15
+
+# Bash ignores SIGTERM, so we send SIGHUP instead, to ensure that bash
+# terminates cleanly.
+KillSignal=SIGHUP
+
+[Install]
+WantedBy=local-fs.target
+RequiredBy=basic.target

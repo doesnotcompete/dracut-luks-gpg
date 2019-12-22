@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+
+grep -v "^[[:space:]]*(#|$)" "/etc/crypttab" | while read dst src key opts; do
+    cryptsetup luksOpen -d /etc/keys/cryptkey "$src" "$dst"
+done 3<&1

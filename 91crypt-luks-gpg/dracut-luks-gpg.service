@@ -1,0 +1,13 @@
+[Unit]
+Description=dracut luks gpg
+Before=initrd-root-device.target
+
+[Service]
+Type=oneshot
+ExecStart=-/bin/luks-gpg
+RemainAfterExit=no
+Timeout=15
+
+# Bash ignores SIGTERM, so we send SIGHUP instead, to ensure that bash
+# terminates cleanly.
+KillSignal=SIGHUP
