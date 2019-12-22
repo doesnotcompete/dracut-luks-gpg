@@ -1,4 +1,0 @@
-# dracut-luks-gpg
-_Work in Progress_
-
-`dracut-luks-gpg` adds support for decrypting LUKS devices with GPG-encrypted keyfiles (including OpenPGP smartcard support) at bootup for systems using the `dracut` initramfs infrastructure with `systemd`.
